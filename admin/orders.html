@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHaven Admin - Orders</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="BookHaven Logo">
+                <h2>BookHaven</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="books.html"><i class="fas fa-book"></i> <span>Books</span></a></li>
+                <li><a href="orders.html" class="active"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
+                <li><a href="sales.html"><i class="fas fa-chart-line"></i> <span>Sales</span></a></li>
+                <li><a href="payment-options.html"><i class="fas fa-credit-card"></i> <span>Payment Options</span></a></li>
+                <li><a href="users.html"><i class="fas fa-users"></i> <span>Users</span></a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            </ul>
+            <div class="admin-sidebar-footer">
+                <a href="#" id="sidebarLogout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Orders Management</h1>
+                <div class="admin-user">
+                    <div class="admin-avatar" id="adminAvatar">
+                        <span id="adminInitials">BO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="admin-table-container">
+                <div class="admin-table-header">
+                    <h2>All Orders</h2>
+                    <button class="admin-btn admin-btn-primary" id="addOrderBtn">Add New Order</button>
+                </div>
+                <table class="admin-table" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>User ID</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                            <th>Payment Status</th>
+                            <th>Order Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Orders will be loaded dynamically -->
+                        <tr>
+                            <td colspan="7">Loading orders...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="admin-pagination" id="ordersPagination">
+                    <!-- Pagination will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="admin-modal" id="orderModal">
+        <div class="admin-modal-content">
+            <span class="admin-close-modal" id="closeOrderModal">&times;</span>
+            <div class="admin-modal-header">
+                <h2 id="orderModalTitle">Add New Order</h2>
+            </div>
+            <form id="orderForm">
+                <input type="hidden" id="orderId">
+                <div class="admin-form-row">
+                    <div class="admin-form-group">
+                        <label for="orderUserId">User ID</label>
+                        <input type="text" id="orderUserId" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="orderStatus">Status</label>
+                        <select id="orderStatus" required>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin-form-row">
+                    <div class="admin-form-group">
+                        <label for="orderPaymentStatus">Payment Status</label>
+                        <select id="orderPaymentStatus" required>
+                            <option value="pending">Pending</option>
+                            <option value="paid">Paid</option>
+                            <option value="refunded">Refunded</option>
+                        </select>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="orderPaymentMethod">Payment Method</label>
+                        <input type="text" id="orderPaymentMethod" required>
+                    </div>
+                </div>
+                <div class="admin-form-row">
+                    <div class="admin-form-group">
+                        <label for="orderDate">Order Date</label>
+                        <input type="date" id="orderDate" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="orderDeliveryDate">Delivery Date</label>
+                        <input type="date" id="orderDeliveryDate">
+                    </div>
+                </div>
+                <div class="admin-form-group">
+                    <label for="orderShippingAddress">Shipping Address</label>
+                    <textarea id="orderShippingAddress" required></textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label for="orderTransactionId">Transaction ID</label>
+                    <input type="text" id="orderTransactionId">
+                </div>
+
+                <h3>Order Items</h3>
+                <div id="orderItems">
+                    <!-- Order items will be added here dynamically -->
+                </div>
+                <button type="button" class="admin-btn admin-btn-secondary" id="addItemBtn">Add Item</button>
+
+                <div class="admin-form-group">
+                    <label for="orderTotalAmount">Total Amount (PKR)</label>
+                    <input type="number" id="orderTotalAmount" step="0.01" min="0" required>
+                </div>
+
+                <div class="admin-form-actions">
+                    <button type="button" class="admin-btn admin-btn-secondary" id="cancelOrderBtn">Cancel</button>
+                    <button type="submit" class="admin-btn admin-btn-primary">Save Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Order Modal -->
+    <div class="admin-modal" id="viewOrderModal">
+        <div class="admin-modal-content">
+            <span class="admin-close-modal" id="closeViewOrderModal">&times;</span>
+            <div class="admin-modal-header">
+                <h2>Order Details</h2>
+            </div>
+            <div class="order-details-container">
+                <div class="order-detail-section">
+                    <h3>Order Information</h3>
+                    <div class="order-detail-item">
+                        <label>Order ID:</label>
+                        <p id="viewOrderId"></p>
+                    </div>
+                    <div class="order-detail-item">
+                        <label>User ID:</label>
+                        <p id="viewOrderUserId"></p>
+                    </div>
+                    <div class="order-detail-item">
+                        <label>Status:</label>
+                        <p id="viewOrderStatus"></p>
+                    </div>
+                    <div class="order-detail-item">
+                        <label>Payment Status:</label>
+                        <p id="viewOrderPaymentStatus"></p>
+                    </div>
+                    <div class="order-detail-item">
+                        <label>Total Amount:</label>
+                        <p id="viewOrderTotalAmount"></p>
+                    </div>
+                </div>
+                <div class="order-detail-section">
+                    <h3>Dates & Shipping</h3>
+                    <div class="order-detail-item">
+                        <label>Order Date:</label>
+                        <p id="viewOrderDate"></p>
+                    </div>
+                    <div class="order-detail-item">
+                        <label>Delivery Date:</label>
+                        <p id="viewOrderDeliveryDate"></p>
+                    </div>
+                    <div class="order-detail-item">
+                        <label>Shipping Address:</label>
+                        <p id="viewOrderShippingAddress"></p>
+                    </div>
+                </div>
+                <div class="order-detail-section">
+                    <h3>Payment Details</h3>
+                    <div class="order-detail-item">
+                        <label>Payment Method:</label>
+                        <p id="viewOrderPaymentMethod"></p>
+                    </div>
+                    <div class="order-detail-item">
+                        <label>Transaction ID:</label>
+                        <p id="viewOrderTransactionId"></p>
+                    </div>
+                </div>
+                <div class="order-detail-section full-width">
+                    <h3>Order Items</h3>
+                    <table class="admin-table" id="viewOrderItemsTable">
+                        <thead>
+                            <tr>
+                                <th>Book ID</th>
+                                <th>Book Title</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Discount</th>
+                                <th>Final Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="viewOrderItemsTableBody">
+                            <!-- Order items will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="admin-form-actions">
+                <button type="button" class="admin-btn admin-btn-secondary" id="closeViewOrderBtn">Close</button>
+                <button type="button" class="admin-btn admin-btn-primary" id="editOrderFromViewBtn">Edit Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="orders.js"></script>
+</body>
+</html>

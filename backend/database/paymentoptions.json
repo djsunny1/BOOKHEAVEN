@@ -1,0 +1,18 @@
+[
+  {
+    "id": "P001",
+    "name": "Easypaisa",
+    "description": "Pakistan's leading mobile payment service",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxGaBBY5tDjffmJ2D9uMxYe43of_CB2ahqwA&s",
+    "accountNumber": "03123456789",
+    "accountName": "BookHaven Store"
+  },
+  {
+    "id": "P002",
+    "name": "JazzCash",
+    "description": "Secure and convenient mobile payment solution",
+    "icon": "https://crystalpng.com/wp-content/uploads/2024/12/new-Jazzcash-logo.png",
+    "accountNumber": "03001234567",
+    "accountName": "BookHaven Store"
+  }
+]

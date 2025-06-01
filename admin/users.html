@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHaven Admin - Users</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="BookHaven Logo">
+                <h2>BookHaven</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="books.html"><i class="fas fa-book"></i> <span>Books</span></a></li>
+                <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
+                <li><a href="sales.html"><i class="fas fa-chart-line"></i> <span>Sales</span></a></li>
+                <li><a href="payment-options.html"><i class="fas fa-credit-card"></i> <span>Payment Options</span></a></li>
+                <li><a href="users.html" class="active"><i class="fas fa-users"></i> <span>Users</span></a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            </ul>
+            <div class="admin-sidebar-footer">
+                <a href="#" id="sidebarLogout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Users Management</h1>
+                <div class="admin-user">
+                    <div id="serverStatus" class="server-status">Server Status: Checking...</div>
+                    <div class="admin-avatar" id="adminAvatar">
+                        <span id="adminInitials">BO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="admin-table-container">
+                <div class="admin-table-header">
+                    <h2>All Users</h2>
+                    <div class="admin-table-actions">
+                        <button class="admin-btn admin-btn-primary" id="addUserBtn">Add New User</button>
+                    </div>
+                </div>
+                <table class="admin-table" id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Joined Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Users will be loaded dynamically -->
+                        <tr>
+                            <td colspan="5">Loading users...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="admin-pagination" id="usersPagination">
+                    <!-- Pagination will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit User Modal -->
+    <div class="admin-modal" id="userModal">
+        <div class="admin-modal-content">
+            <span class="admin-close-modal" id="closeUserModal">&times;</span>
+            <div class="admin-modal-header">
+                <h2 id="userModalTitle">Add New User</h2>
+            </div>
+            <form id="userForm">
+                <input type="hidden" id="userId">
+                <div class="admin-form-row">
+                    <div class="admin-form-group">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="userEmail">Email</label>
+                        <input type="email" id="userEmail" required>
+                    </div>
+                </div>
+                <div class="admin-form-row">
+                    <div class="admin-form-group">
+                        <label for="userPassword">Password</label>
+                        <input type="password" id="userPassword">
+                        <small>Leave blank to keep current password when editing</small>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="userCreated">Account Created</label>
+                        <input type="date" id="userCreated">
+                        <small>Date when the account was created</small>
+                    </div>
+                </div>
+                <div class="admin-form-actions">
+                    <button type="button" class="admin-btn admin-btn-secondary" id="cancelUserBtn">Cancel</button>
+                    <button type="submit" class="admin-btn admin-btn-primary">Save User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View User Modal -->
+    <div class="admin-modal" id="viewUserModal">
+        <div class="admin-modal-content">
+            <span class="admin-close-modal" id="closeViewUserModal">&times;</span>
+            <div class="admin-modal-header">
+                <h2>User Details</h2>
+            </div>
+            <div class="user-details">
+                <div class="user-detail-item">
+                    <label>ID:</label>
+                    <p id="viewUserId"></p>
+                </div>
+                <div class="user-detail-item">
+                    <label>Full Name:</label>
+                    <p id="viewUserName"></p>
+                </div>
+                <div class="user-detail-item">
+                    <label>Email:</label>
+                    <p id="viewUserEmail"></p>
+                </div>
+                <div class="user-detail-item">
+                    <label>Account Created:</label>
+                    <p id="viewUserCreated"></p>
+                </div>
+            </div>
+            <div class="admin-form-actions">
+                <button type="button" class="admin-btn admin-btn-secondary" id="closeViewUserBtn">Close</button>
+                <button type="button" class="admin-btn admin-btn-primary" id="editUserFromViewBtn">Edit User</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .server-status {
+            margin-right: 15px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .server-running {
+            background-color: #e6f7e6;
+            color: #28a745;
+        }
+        .server-not-running {
+            background-color: #f8d7da;
+            color: #dc3545;
+        }
+    </style>
+
+    <script src="check-server-users.js"></script>
+    <script src="users.js"></script>
+</body>
+</html>

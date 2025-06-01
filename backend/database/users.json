@@ -1,0 +1,37 @@
+[
+  {
+    "id": "U001",
+    "fullName": "John Smith Updated",
+    "email": "john.smith@example.com",
+    "password": "John@123",
+    "accountCreated": "16/03/2023"
+  },
+  {
+    "id": "U003",
+    "fullName": "Michael Brown",
+    "email": "michael.brown@example.com",
+    "password": "Michael@789",
+    "accountCreated": "05/09/2023"
+  },
+  {
+    "id": "U005",
+    "fullName": "Rizwan",
+    "email": "kingkivvng@gmail.com",
+    "password": "kingking",
+    "accountCreated": "30/04/2025"
+  },
+  {
+    "id": "U006",
+    "fullName": "Emma Wilsons",
+    "email": "bookshop@gmail.com",
+    "password": "bookshop@gmail.com",
+    "accountCreated": "30/04/2025"
+  },
+  {
+    "id": "U007",
+    "fullName": "sohaib",
+    "email": "sohaibshujah18@gmail.com",
+    "password": "qwerty",
+    "accountCreated": "07/05/2025"
+  }
+]

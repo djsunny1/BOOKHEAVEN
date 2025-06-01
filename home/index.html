@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshop - Premium Book Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Bookshop Logo" width="36">
+                <h1>BookHaven</h1>
+            </div>
+
+            <button class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+
+
+            <div class="header-icons">
+                <button class="borrow-btn" id="loginBtn">Login</button>
+                <button class="borrow-btn signup-btn" id="signupBtn">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="new-releases" class="new-releases">
+            <div class="releases-slider">
+                <div class="releases-slide active">
+                    <div class="new-releases-container">
+                        <div class="new-releases-text">
+                            <h2>New Releases This Week</h2>
+                            <p>It's time to update your reading list with some of the best new fiction, non-fiction and children's books to publish this month. Check out this week's new releases and discover up to 80% off.</p>
+                            <button class="scroll-down-btn">Scroll Down</button>
+                        </div>
+                        <div class="new-releases-books">
+                            <div class="book-cover">
+                                <img src="https://m.media-amazon.com/images/I/81s8xJUzWGL._AC_UF1000,1000_QL80_.jpg" alt="I Want a Better Catastrophe">
+                            </div>
+                            <div class="book-cover">
+                                <img src="https://m.media-amazon.com/images/I/71sBtM3Yi5L._AC_UF1000,1000_QL80_.jpg" alt="The Heat Will Kill You First">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="releases-slide">
+                    <div class="new-releases-container">
+                        <div class="new-releases-text">
+                            <h2>Fiction Bestsellers</h2>
+                            <p>Discover the most popular fiction titles that readers can't put down. From thrilling mysteries to heartwarming romances, find your next favorite book at amazing prices.</p>
+                            <button class="scroll-down-btn">Scroll Down</button>
+                        </div>
+                        <div class="new-releases-books">
+                            <div class="book-cover">
+                                <img src="https://m.media-amazon.com/images/I/71jKRXbLtoL._AC_UF1000,1000_QL80_.jpg" alt="Pride and Protest">
+                            </div>
+                            <div class="book-cover">
+                                <img src="https://m.media-amazon.com/images/I/91b4+QrBGWL._AC_UF1000,1000_QL80_.jpg" alt="The Midnight Library">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="releases-slide">
+                    <div class="new-releases-container">
+                        <div class="new-releases-text">
+                            <h2>Non-Fiction Highlights</h2>
+                            <p>Expand your knowledge with our curated selection of non-fiction books. From biographies to science, these titles offer insights into our fascinating world.</p>
+                            <button class="scroll-down-btn">Scroll Down</button>
+                        </div>
+                        <div class="new-releases-books">
+                            <div class="book-cover">
+                                <img src="https://m.media-amazon.com/images/I/71E8VNPC1dL._AC_UF1000,1000_QL80_.jpg" alt="Time to Come Home">
+                            </div>
+                            <div class="book-cover">
+                                <img src="https://m.media-amazon.com/images/I/71R8pIt-JbL._AC_UF1000,1000_QL80_.jpg" alt="Find a Soulmate">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-dots">
+                    <span class="slider-dot active" data-index="0"></span>
+                    <span class="slider-dot" data-index="1"></span>
+                    <span class="slider-dot" data-index="2"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="browse-books">
+            <h2>Browse Books</h2>
+            <div class="filters-section">
+
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label>Category</label>
+                        <select id="category-filter">
+                            <option value="">All Categories</option>
+                            <!-- Categories will be populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Price Range</label>
+                        <select id="price-filter">
+                            <option value="">All Prices</option>
+                            <option value="0-10">Under PKR 10</option>
+                            <option value="10-15">PKR 10 - PKR 15</option>
+                            <option value="15-20">PKR 15 - PKR 20</option>
+                            <option value="20+">Over PKR 20</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Rating</label>
+                        <select id="rating-filter">
+                            <option value="">All Ratings</option>
+                            <option value="4.5+">4.5 & Above</option>
+                            <option value="4-4.5">4.0 - 4.5</option>
+                            <option value="3.5-4">3.5 - 4.0</option>
+                            <option value="3.5-">Below 3.5</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Author</label>
+                        <select id="author-filter">
+                            <option value="">All Authors</option>
+                            <!-- Authors will be populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Location</label>
+                        <select id="location-filter">
+                            <option value="">All Locations</option>
+                            <!-- Locations will be populated dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button id="clear-filters" class="filter-btn clear-btn">Clear Filters</button>
+                </div>
+            </div>
+            <div class="book-grid" id="book-grid">
+                <!-- Books will be loaded dynamically -->
+            </div>
+            <div class="load-more-container">
+                <button id="load-more-btn" class="load-more-btn">Load More Books</button>
+                <button id="show-less-btn" class="load-more-btn show-less-btn" style="display: none;">Show Less</button>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <div id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Bookshop Logo" width="60">
+            </div>
+            <div class="footer-links">
+                <!-- <a href="#">About</a> -->
+                <!-- <a href="#">Features</a> -->
+                <!-- <a href="#">Pricing</a> -->
+                <!-- <a href="#">Gallery</a> -->
+                <!-- <a href="#">Team</a> -->
+                <a href="../admin/index.html">Admin</a>
+            </div>
+        </div>
+
+        <!-- <div class="newsletter"> -->
+            <!-- <p>Subscribe to stay tuned for new product and latest updates. Let's do it!</p> -->
+            <!-- <div class="subscribe-form"> -->
+                <!-- <input type="email" placeholder="Enter your email address"> -->
+                <!-- <button>Subscribe</button> -->
+            <!-- </div> -->
+        <!-- </div> -->
+
+        <div class="footer-bottom">
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Sales and Refunds</a>
+                <a href="#">Legal</a>
+            </div>
+            <!-- <div class="social-links"> -->
+                <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                <!-- <a href="#"><i class="fab fa-google"></i></a> -->
+                <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
+            <!-- </div> -->
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Login to Your Account</h2>
+            <div id="loginMessage" class="login-message"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-group remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="form-submit-btn">Login</button>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" id="switchToSignup">Sign up</a></p>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Create an Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <div class="form-group terms">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+                <button type="submit" class="form-submit-btn">Sign Up</button>
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-content">
+            <span class="close-modal">&times;</span>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 id="successMessage">Success!</h2>
+            <p id="successDetails">Your action was completed successfully.</p>
+            <button id="successOkBtn" class="form-submit-btn">OK</button>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Your Profile</h2>
+            <div class="profile-details">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-field">
+                        <label>Name</label>
+                        <p id="profileName"></p>
+                    </div>
+                    <div class="profile-field">
+                        <label>Email</label>
+                        <p id="profileEmail"></p>
+                    </div>
+                    <div class="profile-field">
+                        <label>Account Created</label>
+                        <p id="profileCreated"></p>
+                    </div>
+                </div>
+            </div>
+            <button id="profileCloseBtn" class="form-submit-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-content">
+            <span class="close-modal">&times;</span>
+            <h2>Your Shopping Cart</h2>
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be loaded dynamically -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <div class="cart-actions">
+                    <button id="clearCartBtn" class="cart-btn clear-btn">Clear Cart</button>
+                    <button id="checkoutBtn" class="cart-btn checkout-btn">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Change Your Password</h2>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmNewPassword">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword" required>
+                </div>
+                <button type="submit" class="form-submit-btn">Update Password</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Book Details Modal -->
+    <div id="bookDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeBookDetails">&times;</span>
+            <div id="bookDetailsContent">
+                <!-- Book details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/payment.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHaven Admin - Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="BookHaven Logo">
+                <h2>BookHaven</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="books.html"><i class="fas fa-book"></i> <span>Books</span></a></li>
+                <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
+                <li><a href="sales.html"><i class="fas fa-chart-line"></i> <span>Sales</span></a></li>
+                <li><a href="payment-options.html"><i class="fas fa-credit-card"></i> <span>Payment Options</span></a></li>
+                <li><a href="users.html"><i class="fas fa-users"></i> <span>Users</span></a></li>
+                <li><a href="settings.html" class="active"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            </ul>
+            <div class="admin-sidebar-footer">
+                <a href="#" id="sidebarLogout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Settings</h1>
+                <div class="admin-user">
+                    <div class="admin-avatar" id="adminAvatar">
+                        <span id="adminInitials">BO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Container -->
+            <div class="settings-container">
+                <h2>Account Settings</h2>
+
+                <!-- Username and Password Settings -->
+                <div class="settings-content active">
+                    <form id="accountSettingsForm">
+                        <div class="admin-form-group">
+                            <label for="adminUsername">Change Username</label>
+                            <input type="text" id="adminUsername" placeholder="Enter new username" value="bookshop">
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" placeholder="Enter current password" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" placeholder="Enter new password" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+                        </div>
+                        <div class="admin-form-actions">
+                            <button type="submit" class="admin-btn admin-btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>

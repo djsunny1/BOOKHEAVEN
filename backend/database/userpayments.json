@@ -1,0 +1,24 @@
+[
+  {
+    "id": "UP001",
+    "userId": "U001",
+    "paymentMethod": "Easypaisa",
+    "amount": 1500.00,
+    "status": "completed",
+    "transactionId": "EP123456789",
+    "date": "2024-01-15",
+    "orderId": "ORD001",
+    "description": "Book purchase payment"
+  },
+  {
+    "id": "UP002",
+    "userId": "U002",
+    "paymentMethod": "JazzCash",
+    "amount": 2000.00,
+    "status": "completed",
+    "transactionId": "JC987654321",
+    "date": "2024-01-20",
+    "orderId": "ORD002",
+    "description": "Book purchase payment"
+  }
+]

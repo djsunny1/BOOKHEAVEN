@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHaven Admin - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="BookHaven Logo">
+                <h2>BookHaven</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="books.html"><i class="fas fa-book"></i> <span>Books</span></a></li>
+                <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
+                <li><a href="sales.html"><i class="fas fa-chart-line"></i> <span>Sales</span></a></li>
+                <li><a href="payment-options.html"><i class="fas fa-credit-card"></i> <span>Payment Options</span></a></li>
+                <li><a href="users.html"><i class="fas fa-users"></i> <span>Users</span></a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            </ul>
+            <div class="admin-sidebar-footer">
+                <a href="#" id="sidebarLogout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Dashboard</h1>
+                <div class="admin-user">
+                    <div class="admin-avatar" id="adminAvatar">
+                        <span id="adminInitials">BO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access Menu -->
+            <div class="quick-access-menu">
+                <h2>Quick Access</h2>
+                <div class="quick-access-grid">
+                    <a href="books.html" class="quick-access-item">
+                        <div class="quick-access-icon books">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <span>Manage Books</span>
+                    </a>
+                    <a href="payment-options.html" class="quick-access-item">
+                        <div class="quick-access-icon categories">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <span>Payment Options</span>
+                    </a>
+                    <a href="orders.html" class="quick-access-item">
+                        <div class="quick-access-icon orders">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <span>Manage Orders</span>
+                    </a>
+                    <a href="users.html" class="quick-access-item">
+                        <div class="quick-access-icon users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span>Manage Users</span>
+                    </a>
+                    <a href="settings.html" class="quick-access-item">
+                        <div class="quick-access-icon settings">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <span>Settings</span>
+                    </a>
+                    <a href="../home/index.html" class="quick-access-item">
+                        <div class="quick-access-icon website">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <span>View Website</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Cards -->
+            <div class="admin-cards">
+                <div class="admin-card">
+                    <div class="admin-card-icon books">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="admin-card-content">
+                        <h3>156</h3>
+                        <p>Total Books</p>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon users">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="admin-card-content">
+                        <h3>2,453</h3>
+                        <p>Total Users</p>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon orders">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="admin-card-content">
+                        <h3>564</h3>
+                        <p>Total Orders</p>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon revenue">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="admin-card-content">
+                        <h3>PKR 24,389</h3>
+                        <p>Total Revenue</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

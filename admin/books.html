@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHaven Admin - Books</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="BookHaven Logo">
+                <h2>BookHaven</h2>
+            </div>
+            <ul class="admin-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="books.html" class="active"><i class="fas fa-book"></i> <span>Books</span></a></li>
+                <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
+                <li><a href="sales.html"><i class="fas fa-chart-line"></i> <span>Sales</span></a></li>
+                <li><a href="payment-options.html"><i class="fas fa-credit-card"></i> <span>Payment Options</span></a></li>
+                <li><a href="users.html"><i class="fas fa-users"></i> <span>Users</span></a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            </ul>
+            <div class="admin-sidebar-footer">
+                <a href="#" id="sidebarLogout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Books Management</h1>
+                <div class="admin-user">
+                    <div class="admin-avatar" id="adminAvatar">
+                        <span id="adminInitials">BO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Books Table -->
+            <div class="admin-table-container">
+                <div class="admin-table-header">
+                    <h2>All Books</h2>
+                    <div class="admin-table-actions">
+                        <button class="admin-btn admin-btn-primary" id="addBookBtn">Add New Book</button>
+                    </div>
+                </div>
+                <table class="admin-table" id="booksTable">
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="booksTableBody">
+                        <!-- Books will be loaded dynamically -->
+                        <tr>
+                            <td colspan="8">Loading books...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="admin-pagination" id="booksPagination">
+                    <!-- Pagination will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Book Modal -->
+    <div class="admin-modal" id="bookModal">
+        <div class="admin-modal-content">
+            <span class="admin-close-modal" id="closeBookModal">&times;</span>
+            <div class="admin-modal-header">
+                <h2 id="bookModalTitle">Add New Book</h2>
+            </div>
+            <form id="bookForm">
+                <input type="hidden" id="bookId">
+                <div class="book-edit-container">
+                    <div class="book-image-edit">
+                        <div class="book-image-preview">
+                            <img id="bookImagePreview" src="https://via.placeholder.com/200x300?text=Book+Cover" alt="Book Cover Preview">
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="bookImage">Book Image URL</label>
+                            <input type="text" id="bookImage" placeholder="Enter image URL">
+                        </div>
+                    </div>
+                    <div class="book-details-edit">
+                        <div class="admin-form-row">
+                            <div class="admin-form-group">
+                                <label for="bookTitle">Title</label>
+                                <input type="text" id="bookTitle" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="bookAuthor">Author</label>
+                                <input type="text" id="bookAuthor" required>
+                            </div>
+                        </div>
+                        <div class="admin-form-row">
+                            <div class="admin-form-group">
+                                <label for="bookCategory">Category</label>
+                                <select id="bookCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Fiction">Fiction</option>
+                                    <option value="Non-Fiction">Non-Fiction</option>
+                                    <option value="Science Fiction">Science Fiction</option>
+                                    <option value="Fantasy">Fantasy</option>
+                                    <option value="Mystery">Mystery</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Thriller">Thriller</option>
+                                    <option value="Biography">Biography</option>
+                                    <option value="History">History</option>
+                                    <option value="Self-Help">Self-Help</option>
+                                    <option value="Classic">Classic</option>
+                                    <option value="Historical">Historical</option>
+                                    <option value="Dystopian">Dystopian</option>
+                                    <option value="Young Adult">Young Adult</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="bookLocation">Location</label>
+                                <input type="text" id="bookLocation">
+                            </div>
+                        </div>
+                        <div class="admin-form-row">
+                            <div class="admin-form-group">
+                                <label for="bookActualPrice">Actual Price (PKR)</label>
+                                <input type="number" id="bookActualPrice" step="0.01" min="0" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="bookDiscount">Discount (%)</label>
+                                <input type="number" id="bookDiscount" step="1" min="0" max="100">
+                            </div>
+                        </div>
+                        <div class="admin-form-row">
+                            <div class="admin-form-group">
+                                <label for="bookFinalPrice">Final Price (PKR)</label>
+                                <input type="number" id="bookFinalPrice" step="0.01" min="0" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="bookReleaseDate">Release Date</label>
+                                <input type="date" id="bookReleaseDate">
+                            </div>
+                        </div>
+                        <div class="admin-form-row">
+                            <div class="admin-form-group">
+                                <label for="bookStock">Stock</label>
+                                <input type="number" id="bookStock" min="0" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="bookRating">Rating (0-5)</label>
+                                <input type="number" id="bookRating" step="0.1" min="0" max="5" required>
+                            </div>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="bookDescription">Description</label>
+                            <textarea id="bookDescription" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-form-actions">
+                    <button type="button" class="admin-btn admin-btn-secondary" id="cancelBookBtn">Cancel</button>
+                    <button type="submit" class="admin-btn admin-btn-primary">Save Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Book Modal -->
+    <div class="admin-modal" id="viewBookModal">
+        <div class="admin-modal-content">
+            <span class="admin-close-modal" id="closeViewBookModal">&times;</span>
+            <div class="admin-modal-header">
+                <h2>Book Details</h2>
+            </div>
+            <div class="book-view-container">
+                <div class="book-image-container">
+                    <img id="viewBookImage" src="" alt="Book Cover">
+                </div>
+                <div class="book-details">
+                    <div class="book-detail-item">
+                        <label>Book ID:</label>
+                        <p id="viewBookId"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Title:</label>
+                        <p id="viewBookTitle"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Author:</label>
+                        <p id="viewBookAuthor"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Category:</label>
+                        <p id="viewBookCategory"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Description:</label>
+                        <p id="viewBookDescription"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Actual Price:</label>
+                        <p id="viewBookActualPrice"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Discount:</label>
+                        <p id="viewBookDiscount"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Final Price:</label>
+                        <p id="viewBookFinalPrice"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Release Date:</label>
+                        <p id="viewBookReleaseDate"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Location:</label>
+                        <p id="viewBookLocation"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Stock:</label>
+                        <p id="viewBookStock"></p>
+                    </div>
+                    <div class="book-detail-item">
+                        <label>Rating:</label>
+                        <p id="viewBookRating"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-form-actions">
+                <button type="button" class="admin-btn admin-btn-secondary" id="closeViewBookBtn">Close</button>
+                <button type="button" class="admin-btn admin-btn-primary" id="editBookFromViewBtn">Edit Book</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="books.js"></script>
+</body>
+</html>
